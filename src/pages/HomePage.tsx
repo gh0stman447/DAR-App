@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Header from '../components/Header';
 import FilterBlock from '../components/FilterBlock';
-import RecepesBlock from '../components/RecepesBlock';
+import RecepesBlock from '../components/RecipesBlock';
 
 const HomePage = () => {
   return (

@@ -1,13 +1,19 @@
 import { TimerIcon, StarIcon, StarFilledIcon } from '@radix-ui/react-icons';
+import { FC } from 'react';
+import { Recipe } from '../state/recipes/recipesSlice';
 
-const Dish = () => {
+interface DishProps {
+  recipe: Recipe;
+}
+
+const Dish: FC<DishProps> = ({ recipe }) => {
   return (
     <div className='flex bg-white max-w-[452px]'>
       <div>
-        <div className='font-medium text-[16px] px-6 py-[22px] text-center '>
-          Наименование блюда
+        <div className='font-medium text-[16px] px-6 py-[22px] text-center '>{recipe.name}</div>
+        <div className='bg-[#fafafa] w-[226px] h-[294px]'>
+          <img src={recipe.image} alt={recipe.name} />
         </div>
-        <div className='bg-[#fafafa] w-[226px] h-[294px]'>Картинка</div>
       </div>
       <div className='flex flex-col gap-2 p-6'>
         <div className='text-[10px] opacity-45'>
@@ -18,14 +24,14 @@ const Dish = () => {
         <div className='flex flex-col gap-2 text-[12px]'>
           <div className='flex gap-2 items-center'>
             <TimerIcon />
-            <span> 30 минут</span>
+            <span> {recipe.cookTimeMinutes}</span>
           </div>
           <div className='flex gap-2 items-center'>
-            Cложность:
+            Cложность: {recipe.difficulty}
             <StarFilledIcon /> <StarIcon /> <StarIcon />
           </div>
-          <div>Европейская кухня</div>
-          <div>Завтрак, Обед, Ужин</div>
+          <div>{recipe.cuisine}</div>
+          <div>{recipe.mealType.map((type) => type)}</div>
         </div>
       </div>
     </div>

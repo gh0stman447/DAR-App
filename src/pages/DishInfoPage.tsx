@@ -20,7 +20,7 @@ const DishInfoPage = () => {
   return (
     <div className='flex flex-col gap-y-4 bg-grey'>
       <Header title='Тайтл' />
-      <div className=' gap-x-4'>
+      <div className='flex gap-x-4'>
         <div className='flex flex-col gap-3 max-w-[465px] w-full bg-grey'>
           {/* {Object.entries(dishInfo).map(([title, info], index) => (
             <InfoBlock key={index} title={title} info={info} />

@@ -1,12 +1,12 @@
 import { Flex, Select } from '@radix-ui/themes';
 import React, { FC } from 'react';
 
-interface pizzaFilterProps {
+interface recipeFilterProps {
   label: string;
   obj: Object;
 }
 
-const ItemFilter: FC<pizzaFilterProps> = ({ obj, label }) => {
+const ItemFilter: FC<recipeFilterProps> = ({ obj, label }) => {
   return (
     <div className='flex gap-3 justify-end'>
       <div>{label}</div>
