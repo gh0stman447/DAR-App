@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Header from '../components/Header';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { ChevronLeftIcon, ChevronRightIcon } from '@radix-ui/react-icons';
 import { useAppDispatch, useAppSelector } from '../hooks';
 import { STATUS } from '../constants/status';
@@ -21,11 +21,24 @@ import { getRecipesListAction } from '../state/recipes/recipesSlice';
 const DishInfoPage = () => {
   const { id } = useParams();
   const { recipesList, status } = useAppSelector((state) => state.recipes);
+  const navigate = useNavigate();
 
   if (status === STATUS.loading) return <Spinner size={'3'} />;
 
   const recipe = recipesList.recipes.find((recipe) => recipe.id.toString() === id);
   if (!recipe) return <div>Рецепт не найден:(</div>;
+
+  const getPrevRecipeHandler = () => {
+    const prevRecipeIndex = recipesList.recipes.indexOf(recipe) - 1;
+    if (prevRecipeIndex < 0) return;
+    navigate(`/dish/${recipesList.recipes[prevRecipeIndex].id}`);
+  };
+
+  const getNextRecipeHandler = () => {
+    const nextRecipeIndex = recipesList.recipes.indexOf(recipe) + 1;
+    if (nextRecipeIndex >= recipesList.recipes.length) return;
+    navigate(`/dish/${recipesList.recipes[nextRecipeIndex].id}`);
+  };
 
   return (
     <div className='flex flex-col gap-y-4 bg-grey'>
@@ -98,10 +111,16 @@ const DishInfoPage = () => {
             <img src={recipe.image} alt={recipe.name} />
           </div>
           <div className='h-14 flex items-center  justify-center py-3 gap-2'>
-            <button className='p-[10px] bg-white border-2 border-grey rounded-md hover:bg-light-grey'>
+            <button
+              className='p-[10px] bg-white border-2 border-grey rounded-md hover:bg-light-grey'
+              onClick={getPrevRecipeHandler}
+            >
               <ChevronLeftIcon />
             </button>
-            <button className='p-[10px] bg-white border-2 border-grey rounded-md hover:bg-light-grey'>
+            <button
+              className='p-[10px] bg-white border-2 border-grey rounded-md hover:bg-light-grey'
+              onClick={getNextRecipeHandler}
+            >
               <ChevronRightIcon />
             </button>
           </div>
