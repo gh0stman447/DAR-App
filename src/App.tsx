@@ -3,6 +3,8 @@ import { FC } from 'react';
 import { Provider } from 'react-redux';
 import store from './state/store';
 import { RouterProvider } from 'react-router-dom';
+import RecipesLoader from './components/RecipesLoader';
+import { isFiltersNull } from './state/recipes/recipesSlice';
 
 interface AppProps {
   router: any;
@@ -10,11 +12,15 @@ interface AppProps {
 
 const App: FC<AppProps> = ({ router }) => {
   return (
-    <Provider store={store}>
-      <Theme hasBackground={false}>
-        <RouterProvider router={router} />
-      </Theme>
-    </Provider>
+    <>
+      <Provider store={store}>
+        <Theme hasBackground={false}>
+          <RecipesLoader>
+            <RouterProvider router={router} />
+          </RecipesLoader>
+        </Theme>
+      </Provider>
+    </>
   );
 };
 

@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
 import Header from '../components/Header';
 import FilterBlock from '../components/FilterBlock';
-import RecepesBlock from '../components/RecipesBlock';
+import RecipesBlock from '../components/RecipesBlock';
+import { useAppSelector } from '../hooks';
 
 const HomePage = () => {
   return (
@@ -9,7 +10,7 @@ const HomePage = () => {
       <Header title='Сборник рецептов из разных стран мира' />
       <div className='flex gap-x-4'>
         <FilterBlock />
-        <RecepesBlock />
+        <RecipesBlock />
       </div>
     </div>
   );

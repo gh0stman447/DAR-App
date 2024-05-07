@@ -1,20 +1,26 @@
 import httpService from '../HttpService';
 import ApiConfig from '../ApiConfig';
+import { RecipesList } from '../../state/recipes/recipesSlice';
 
 export const getRecipesListApi = async () => {
-  return await httpService.get(ApiConfig.recipes);
+  return await httpService.get<RecipesList>(ApiConfig.recipes);
 };
 
-// export const postPizzasApi = async (data) => {
-//   return await httpService.post(ApiConfig.Pizzas, data);
-// };
+export const getFiltersListApi = async () => {
+  const mealType = new Set<string>();
+  const cuisines = new Set<string>();
+  const difficulties = new Set<string>();
 
-// export const deletePizzasApi = async (id) => {
-//   const url = `${ApiConfig.Pizzas}/${id}`;
-//   await httpService.delete(url);
-// };
+  const res = await httpService.get(ApiConfig.allFilters);
+  res.data.recipes.forEach((x: any) => {
+    cuisines.add(x.cuisine);
+    difficulties.add(x.difficulty);
+    x.mealType.forEach((t: any) => mealType.add(t));
+  });
 
-// export const putPizzasApi = async (id, data) => {
-//   const url = `${ApiConfig.Pizzas}/${id}`;
-//   await httpService.put(url, data);
-// };
+  return {
+    mealType: [...mealType],
+    cuisine: [...cuisines],
+    difficulty: [...difficulties],
+  };
+};

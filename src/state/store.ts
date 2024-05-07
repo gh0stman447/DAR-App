@@ -1,10 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
-import recipesReducer from './recipes/recipesSlice';
+import recipesReducer, { changingFiltersMiddleware } from './recipes/recipesSlice';
 
 const store = configureStore({
   reducer: {
     recipes: recipesReducer,
   },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().prepend(changingFiltersMiddleware.middleware),
 });
 export default store;
 

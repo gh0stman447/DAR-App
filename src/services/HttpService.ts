@@ -1,8 +1,7 @@
 import axios from 'axios';
-import { Recipe, RecipesList } from '../state/recipes/recipesSlice';
 
 const HttpExport = {
-  get: axios.get<RecipesList>,
+  get: axios.get,
 };
 
 export default HttpExport;
