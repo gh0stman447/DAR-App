@@ -13,6 +13,7 @@ const router = createBrowserRouter([
   {
     path: '/',
     element: <HomePage />,
+    errorElement: <div>404</div>,
   },
   {
     path: '/dish/:id',

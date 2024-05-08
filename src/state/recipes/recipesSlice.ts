@@ -107,7 +107,7 @@ export const getFiltersListAction = createAsyncThunk(
 
 export const getInitialDataAction = createAsyncThunk(
   'recipes/getInitialDataAction',
-  async (_, { rejectWithValue, dispatch }) => {
+  async (_, { dispatch }) => {
     dispatch(getFiltersListAction());
     dispatch(getRecipesListAction());
   },
@@ -170,7 +170,7 @@ const recipesSlice = createSlice({
   },
 });
 
-export const { applyFilters, resetFilters, changeFilter } = recipesSlice.actions;
+export const { changeFilter, applyFilters, resetFilters } = recipesSlice.actions;
 
 export default recipesSlice.reducer;
 

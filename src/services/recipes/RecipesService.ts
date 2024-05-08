@@ -1,6 +1,6 @@
 import httpService from '../HttpService';
 import ApiConfig from '../ApiConfig';
-import { RecipesList } from '../../state/recipes/recipesSlice';
+import { Recipe, RecipesList } from '../../state/recipes/recipesSlice';
 
 export const getRecipesListApi = async () => {
   return await httpService.get<RecipesList>(ApiConfig.recipes);
@@ -12,10 +12,10 @@ export const getFiltersListApi = async () => {
   const difficulties = new Set<string>();
 
   const res = await httpService.get(ApiConfig.allFilters);
-  res.data.recipes.forEach((x: any) => {
-    cuisines.add(x.cuisine);
-    difficulties.add(x.difficulty);
-    x.mealType.forEach((t: any) => mealType.add(t));
+  res.data.recipes.forEach((recipe: Recipe) => {
+    cuisines.add(recipe.cuisine);
+    difficulties.add(recipe.difficulty);
+    recipe.mealType.forEach((type: any) => mealType.add(type));
   });
 
   return {

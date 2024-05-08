@@ -13,6 +13,7 @@ const ItemFilter: FC<recipeFilterProps> = ({ label, keyFilter }) => {
   const filter = useAppSelector((state) => state.recipes.filters[keyFilter]);
 
   const handleChange = (event: string) => {
+    console.log(event);
     dispatch(changeFilter({ field: keyFilter, value: event === '-' ? null : event }));
   };
 
@@ -23,6 +24,7 @@ const ItemFilter: FC<recipeFilterProps> = ({ label, keyFilter }) => {
         <Select onValueChange={handleChange} value={filter?.value || '-'}>
           <SelectTrigger className='w-[180px]'>
             <SelectValue placeholder='Theme' />
+            123
           </SelectTrigger>
           <SelectContent>
             <SelectItem value={'-'}>Любой</SelectItem>

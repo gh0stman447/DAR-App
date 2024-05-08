@@ -4,7 +4,6 @@ import { Provider } from 'react-redux';
 import store from './state/store';
 import { RouterProvider } from 'react-router-dom';
 import RecipesLoader from './components/RecipesLoader';
-import { isFiltersNull } from './state/recipes/recipesSlice';
 
 interface AppProps {
   router: any;
