@@ -5,53 +5,18 @@ import {
   createSlice,
   isAnyOf,
 } from '@reduxjs/toolkit';
-import { STATUS } from '../../constants/status';
 import { getFiltersListApi, getRecipesListApi } from '../../services/recipes/RecipesService';
-
-type field = {
-  value: string | null;
-  avaible: string[];
-};
+import { Field, Filters, Recipe, RecipesList } from '../../lib/types';
+import { Status } from '../../lib/constants';
 
 export const isFiltersNull = (filters: Filters): filters is Filters & Record<keyof Filters, null> =>
   Object.values(filters).every((field) => field.value === null);
-export type Filters = {
-  cuisine: field;
-  mealType: field;
-  difficulty: field;
-};
-
-export type Recipe = {
-  id: number;
-  name: string;
-  ingredients: string[];
-  instructions: string[];
-  prepTimeMinutes: number;
-  cookTimeMinutes: number;
-  servings: number;
-  difficulty: string;
-  cuisine: string;
-  caloriesPerServing: number;
-  tags: string[];
-  userId: number;
-  image: string;
-  rating: number;
-  reviewCount: number;
-  mealType: string[];
-};
-
-export type RecipesList = {
-  recipes: Recipe[];
-  total: number;
-  skip: number;
-  limit: number;
-};
 
 type RecipesState = {
   recipesList: RecipesList;
   filteredRecipes: Recipe[];
   filters: Filters;
-  status: STATUS;
+  status: Status;
 };
 
 const initialState: RecipesState = {
@@ -67,7 +32,7 @@ const initialState: RecipesState = {
     mealType: { value: null, avaible: [] },
     difficulty: { value: null, avaible: [] },
   },
-  status: STATUS.success,
+  status: Status.SUCCESS,
 };
 
 export const getRecipesListAction = createAsyncThunk(
@@ -131,7 +96,7 @@ const recipesSlice = createSlice({
   reducers: {
     changeFilter: (
       state,
-      { payload }: PayloadAction<{ field: keyof Filters; value: field['value'] }>,
+      { payload }: PayloadAction<{ field: keyof Filters; value: Field['value'] }>,
     ) => {
       state.filters[payload.field]!.value = payload.value;
     },
@@ -150,13 +115,6 @@ const recipesSlice = createSlice({
       { payload: { limit, page } }: PayloadAction<{ limit: number; page: number }>,
     ) => {
       state.filteredRecipes = state.filteredRecipes.slice(limit * page, limit * (page + 1));
-      console.log(
-        _applyFilters(state.recipesList.recipes, state.filters).slice(
-          limit * page,
-          limit * (page + 1),
-        ),
-        'filtered',
-      );
     },
   },
 
@@ -164,15 +122,15 @@ const recipesSlice = createSlice({
     builder.addCase(getRecipesListAction.fulfilled, (state, action) => {
       state.recipesList = action.payload;
       state.filteredRecipes = action.payload.recipes;
-      state.status = STATUS.success;
+      state.status = Status.SUCCESS;
     });
 
     builder.addCase(getRecipesListAction.pending, (state) => {
-      state.status = STATUS.loading;
+      state.status = Status.LOADING;
     });
 
     builder.addCase(getRecipesListAction.rejected, (state) => {
-      state.status = STATUS.error;
+      state.status = Status.ERROR;
     });
 
     builder.addCase(getFiltersListAction.fulfilled, (state, action) => {

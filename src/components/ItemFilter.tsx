@@ -1,7 +1,9 @@
 import { FC } from 'react';
-import { Filters, changeFilter } from '../state/recipes/recipesSlice';
+import { changeFilter } from '../state/recipes/recipesSlice';
 import { useAppDispatch, useAppSelector } from '../hooks';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './UI/Select';
+import { Filters } from '../lib/types';
+import { ChevronDownIcon } from '@radix-ui/themes';
 
 interface recipeFilterProps {
   label: string;
@@ -12,20 +14,22 @@ const ItemFilter: FC<recipeFilterProps> = ({ label, keyFilter }) => {
   const filter = useAppSelector((state) => state.recipes.filters[keyFilter]);
 
   const handleChange = (event: string) => {
-    console.log(event);
     dispatch(changeFilter({ field: keyFilter, value: event === '-' ? null : event }));
   };
 
   return (
-    <div className='flex gap-3 justify-end'>
-      <div>{label}</div>
+    <div className='sm:flex gap-3 justify-end'>
+      <div className='mb-2 sm:mb-0'>{label}</div>
       <div className='flex flex-col max-w-[285px] w-full'>
         <Select onValueChange={handleChange} value={filter?.value || '-'}>
           <SelectTrigger className='w-[180px]'>
             <SelectValue placeholder='Theme' />
+            <ChevronDownIcon />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value={'-'}>Любой</SelectItem>
+            <SelectItem value={'-'}>
+              {keyFilter === 'cuisine'? 'Все страны и регионы' : 'Все типы'}
+            </SelectItem>
             {filter?.avaible.map((value) => (
               <SelectItem key={value} value={value}>
                 {value}

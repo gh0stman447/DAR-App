@@ -1,21 +1,22 @@
 import Header from '../components/Header';
 import { useNavigate, useParams } from 'react-router-dom';
 import { ChevronLeftIcon, ChevronRightIcon } from '@radix-ui/react-icons';
-import { STATUS } from '../constants/status';
 import { Spinner } from '@radix-ui/themes';
 import { useAppSelector } from '../hooks';
+import RecipeInstruction from '../components/RecipeInstruction';
+import RecipeNavigationButtons from '../components/RecipeNavigationButtons';
+import { Status } from '../lib/constants';
 
 const DishInfoPage = () => {
   const { id } = useParams();
-  const { recipesList, status } = useAppSelector((state) => state.recipes);
-  const navigate = useNavigate();
 
-  if (status === STATUS.loading) return <Spinner size={'3'} />;
+  const { recipesList, status } = useAppSelector((state) => state.recipes);
+
+  if (status === Status.LOADING) return <Spinner size={'3'} />;
 
   const recipe = recipesList.recipes.find((recipe) => recipe.id.toString() === id);
-  const recipeIndex = recipesList.recipes.findIndex((recipe) => recipe.id.toString() === id);
 
-  if (!recipe) return <div>Рецепт не найден:(</div>;
+  if (!id || !recipe) return <div>Рецепт не найден:(</div>;
 
   return (
     <div className='flex flex-col gap-y-4 bg-grey'>
@@ -61,17 +62,7 @@ const DishInfoPage = () => {
           </div>
           <div className='bg-white flex-grow mb-3 3xl:mb-0'>
             <div className='divide-y bg-white'>
-              <div className='py-4 px-6 font-medium text-[16px]'>Инструкция по приготовлению</div>
-              <div className='flex flex-col gap-5 pl-12 py-6 px-6'>
-                {recipe.instructions.map((step) => (
-                  <p
-                    key={step}
-                    className='relative before:content-[""] before:block before:w-2 before:h-2 before:absolute before:top-2 before:-left-6 before:rounded-full before:border-[2px] before:border-blue'
-                  >
-                    {step}
-                  </p>
-                ))}
-              </div>
+              <RecipeInstruction recipe={recipe} />
             </div>
           </div>
         </div>
@@ -79,27 +70,7 @@ const DishInfoPage = () => {
           <div className='flex-grow p-3 '>
             <img src={recipe.image} alt={recipe.name} className='w-full h-full object-cover' />
           </div>
-          <div className='h-14 flex items-center  justify-center py-3 gap-2'>
-            <button
-              className='p-[10px] bg-white border-2 border-grey rounded-md hover:bg-light-grey hover:scale-125 duration-300'
-              onClick={() =>
-                recipeIndex !== 0 && navigate(`/dish/${recipesList.recipes[recipeIndex - 1].id}`)
-              }
-              disabled={recipeIndex === 0}
-            >
-              <ChevronLeftIcon />
-            </button>
-            <button
-              className='p-[10px] bg-white border-2 border-grey rounded-md hover:bg-light-grey hover:scale-125 duration-300'
-              onClick={() =>
-                recipeIndex !== recipesList.recipes.length - 1 &&
-                navigate(`/dish/${recipesList.recipes[recipeIndex + 1].id}`)
-              }
-              disabled={recipeIndex === recipesList.recipes.length - 1}
-            >
-              <ChevronRightIcon />
-            </button>
-          </div>
+          <RecipeNavigationButtons recipesList={recipesList} id={id} />
         </div>
       </div>
     </div>

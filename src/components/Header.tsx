@@ -1,5 +1,5 @@
 import { ArrowLeftIcon } from '@radix-ui/react-icons';
-import React, { FC } from 'react';
+import { FC } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
 interface HeaderProps {

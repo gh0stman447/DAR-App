@@ -1,25 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import DishInfoPage from './pages/DishInfoPage';
+
 import '@radix-ui/themes/styles.css';
 import App from './App';
 import { createBrowserRouter } from 'react-router-dom';
-import HomePage from './pages/HomePage';
+import routes from './routes/routes';
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 
-const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <HomePage />,
-    errorElement: <div>404</div>,
-  },
-  {
-    path: '/dish/:id',
-    element: <DishInfoPage />,
-  },
-]);
+const router = createBrowserRouter(routes);
 
 root.render(
   <React.StrictMode>

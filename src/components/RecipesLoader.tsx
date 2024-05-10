@@ -10,7 +10,7 @@ const RecipesLoader = ({ children }: RecipesLoaderProps) => {
 
   useEffect(() => {
     dispatch(getInitialDataAction());
-  }, []);
+  }, [dispatch]);
 
   return children;
 };

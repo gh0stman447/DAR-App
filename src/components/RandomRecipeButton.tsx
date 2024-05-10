@@ -1,7 +1,6 @@
-import { Button } from '@radix-ui/themes';
-import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAppSelector } from '../hooks';
+import { Button } from '@radix-ui/themes';
 
 const RandomRecipeButton = () => {
   const recipes = useAppSelector((state) => state.recipes.filteredRecipes);
@@ -14,7 +13,6 @@ const RandomRecipeButton = () => {
         variant='outline'
         color='gray'
         size={'3'}
-        className='bg-blue'
         onClick={() => navigate(`/dish/${getRandomInt(1, recipes.length + 1)}`)}
       >
         Мне повезёт!
