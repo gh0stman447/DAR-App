@@ -12,9 +12,7 @@ module.exports = {
       '3xl': '1770px',
       '4xl': '1920px',
     },
-    fontFamily: {
-      body: 'Roboto, sans-serif',
-    },
+
     colors: {
       blue: '#1890FF',
       grey: '#EFEFEF',

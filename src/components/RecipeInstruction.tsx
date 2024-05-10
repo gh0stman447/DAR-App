@@ -8,8 +8,8 @@ interface RecipeInstructionProps {
 const RecipeInstruction: FC<RecipeInstructionProps> = ({ recipe }) => {
   return (
     <>
-      <div className='py-4 px-6 font-medium text-[16px]'>Инструкция по приготовлению</div>
-      <div className='flex flex-col gap-5 pl-12 py-6 px-6'>
+      <div className='py-4 px-6'>Инструкция по приготовлению</div>
+      <div className='flex flex-col gap-5 pl-12 py-6 px-6 font-normal text-[14px]'>
         {recipe.instructions.map((step) => (
           <p
             key={step}

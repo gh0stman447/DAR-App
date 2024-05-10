@@ -14,7 +14,7 @@ const Header: FC<HeaderProps> = ({ title }) => {
       <div className='flex gap-4 items-center'>
         {showArrow && (
           <Link to={'/'}>
-            <ArrowLeftIcon className='cursor-pointer' />
+            <ArrowLeftIcon className='cursor-pointer' height={20} width={20} />
           </Link>
         )}
         {title}

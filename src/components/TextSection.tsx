@@ -2,7 +2,7 @@ import React from 'react';
 
 const TextSection = () => {
   return (
-    <div className='flex flex-col gap-4 mb-12'>
+    <div className='flex flex-col gap-4'>
       <p>
         В нашей жизни, когда время становится все более ценным ресурсом, задача планирования приема
         пищи становится все более сложной.

@@ -19,12 +19,12 @@ const DifficultyFilter: React.FC<DiffficultyFilterProps> = ({
 
   return (
     <div className='sm:flex gap-2 sm:justify-end sm:items-center'>
-      <div className='sm:text-right mb-2 sm:mb-0'>Сложность&nbsp; приготовления:</div>
+      <div className='sm:text-right mb-2 sm:mb-0 font-bold'>Сложность&nbsp; приготовления:</div>
       <div
         className='flex
           '
       >
-        <div className='flex'>
+        <div className='flex font-normal'>
           {filtersArray.map((filter, index, arr) => (
             <FilterButton
               index={index}

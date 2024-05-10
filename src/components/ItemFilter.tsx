@@ -18,8 +18,8 @@ const ItemFilter: FC<recipeFilterProps> = ({ label, keyFilter }) => {
   };
 
   return (
-    <div className='sm:flex gap-3 justify-end'>
-      <div className='mb-2 sm:mb-0'>{label}</div>
+    <div className='sm:flex gap-3 justify-end items-center'>
+      <div className='mb-2 sm:mb-0 font-bold'>{label}</div>
       <div className='flex flex-col max-w-[285px] w-full'>
         <Select onValueChange={handleChange} value={filter?.value || '-'}>
           <SelectTrigger className='w-[180px]'>
@@ -28,7 +28,7 @@ const ItemFilter: FC<recipeFilterProps> = ({ label, keyFilter }) => {
           </SelectTrigger>
           <SelectContent>
             <SelectItem value={'-'}>
-              {keyFilter === 'cuisine'? 'Все страны и регионы' : 'Все типы'}
+              {keyFilter === 'cuisine' ? 'Все страны и регионы' : 'Все типы'}
             </SelectItem>
             {filter?.avaible.map((value) => (
               <SelectItem key={value} value={value}>
