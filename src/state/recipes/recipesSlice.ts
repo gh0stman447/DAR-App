@@ -145,6 +145,19 @@ const recipesSlice = createSlice({
       state.filters.difficulty.value = null;
       state.filters.mealType.value = null;
     },
+    changePage: (
+      state,
+      { payload: { limit, page } }: PayloadAction<{ limit: number; page: number }>,
+    ) => {
+      state.filteredRecipes = state.filteredRecipes.slice(limit * page, limit * (page + 1));
+      console.log(
+        _applyFilters(state.recipesList.recipes, state.filters).slice(
+          limit * page,
+          limit * (page + 1),
+        ),
+        'filtered',
+      );
+    },
   },
 
   extraReducers: (builder) => {
@@ -170,7 +183,7 @@ const recipesSlice = createSlice({
   },
 });
 
-export const { changeFilter, applyFilters, resetFilters } = recipesSlice.actions;
+export const { changeFilter, applyFilters, resetFilters, changePage } = recipesSlice.actions;
 
 export default recipesSlice.reducer;
 

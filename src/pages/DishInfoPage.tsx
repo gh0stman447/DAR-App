@@ -5,17 +5,6 @@ import { STATUS } from '../constants/status';
 import { Spinner } from '@radix-ui/themes';
 import { useAppSelector } from '../hooks';
 
-// import InfoBlock from '../components/InfoBlock';
-
-// const dishInfo = {
-//   cuisine: 'Европейкая',
-//   tags: '#Выпечка',
-//   calories: { value: '444 ккал', weight: '100 грамм' },
-//   servings: 4,
-//   description:
-//     'Традиционное итальянское блюдо, изначально в виде круглой дрожжевой лепешки, выпекаемой с уложенной сверху начинкой из томатного соуса, сыра и зачастую других ингредиентов, таких как мясо, овощи, грибы и прочие продукты. Небольшую пиццу иногда называют пиццеттой.',
-// };
-
 const DishInfoPage = () => {
   const { id } = useParams();
   const { recipesList, status } = useAppSelector((state) => state.recipes);
@@ -33,9 +22,6 @@ const DishInfoPage = () => {
       <Header title={recipe.name} />
       <div className='lg:grid lg:grid-cols-2 gap-x-4 3xl:flex-nowrap 3xl:flex'>
         <div className='flex flex-col gap-3 w-full 3xl:max-w-[465px] bg-grey'>
-          {/* {Object.entries(dishInfo).map(([title, info], index) => (
-            <InfoBlock key={index} title={title} info={info} />
-          ))} */}
           <div className='divide-y bg-white'>
             <div className='py-4 px-6 font-medium text-[16px]'>Кухня</div>
             <div className='py-6 px-6'>{recipe.cuisine}</div>
@@ -99,7 +85,7 @@ const DishInfoPage = () => {
               onClick={() =>
                 recipeIndex !== 0 && navigate(`/dish/${recipesList.recipes[recipeIndex - 1].id}`)
               }
-              disabled={recipeIndex === recipesList.recipes[0].id}
+              disabled={recipeIndex === 0}
             >
               <ChevronLeftIcon />
             </button>

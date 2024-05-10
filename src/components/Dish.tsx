@@ -2,7 +2,6 @@ import { TimerIcon, StarIcon, StarFilledIcon } from '@radix-ui/react-icons';
 import { FC } from 'react';
 import { Recipe } from '../state/recipes/recipesSlice';
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
 import { useAppSelector } from '../hooks';
 
 interface DishProps {
@@ -15,14 +14,14 @@ const Dish: FC<DishProps> = ({ recipe }) => {
 
   return (
     <Link to={`/dish/${recipe.id}`}>
-      <div className='mb-3 2xl:mb-0 flex bg-white 4xl:w-[450px] lg:h-[400px] hover:shadow-black hover:shadow-2xl transition-all hover:scale-105 duration-200'>
+      <div className='mb-3 2xl:mb-0 flex bg-white 4xl:w-[450px] lg:h-[450px] hover:shadow-black hover:shadow-2xl transition-all hover:scale-105 duration-200'>
         <div className='flex flex-col'>
           <div className='font-medium text-[16px] px-6 py-[22px] text-center'>{recipe.name}</div>
           <div className='bg-[#fafafa] grow'>
             <img
               src={recipe.image}
               alt={recipe.name}
-              className='max-w-[140px] md:max-w-[250px] h-full object-cover'
+              className='max-w-[140px] md:max-w-[220px] h-full object-cover'
             />
           </div>
         </div>
@@ -34,7 +33,7 @@ const Dish: FC<DishProps> = ({ recipe }) => {
               <span> {recipe.cookTimeMinutes} минут</span>
             </div>
             <div className='flex gap-2 items-center'>
-              Cложность: {recipe.difficulty}
+              Cложность:
               {[0, 1, 2].map((index) =>
                 index <= difficultyIndex ? <StarFilledIcon /> : <StarIcon />,
               )}

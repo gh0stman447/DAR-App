@@ -1,5 +1,4 @@
-import { Flex } from '@radix-ui/themes';
-import React, { FC } from 'react';
+import { FC } from 'react';
 import { Filters, changeFilter } from '../state/recipes/recipesSlice';
 import { useAppDispatch, useAppSelector } from '../hooks';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './UI/Select';
@@ -24,12 +23,13 @@ const ItemFilter: FC<recipeFilterProps> = ({ label, keyFilter }) => {
         <Select onValueChange={handleChange} value={filter?.value || '-'}>
           <SelectTrigger className='w-[180px]'>
             <SelectValue placeholder='Theme' />
-            123
           </SelectTrigger>
           <SelectContent>
             <SelectItem value={'-'}>Любой</SelectItem>
             {filter?.avaible.map((value) => (
-              <SelectItem value={value}>{value}</SelectItem>
+              <SelectItem key={value} value={value}>
+                {value}
+              </SelectItem>
             ))}
           </SelectContent>
         </Select>
