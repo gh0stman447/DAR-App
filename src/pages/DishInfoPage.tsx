@@ -72,7 +72,11 @@ const DishInfoPage = () => {
         </div>
         <div className='bg-light-grey w-full flex flex-col gap-3 col-span-2 '>
           <div className='flex-grow p-3 '>
-            <img src={recipe.image} alt={recipe.name} className='w-full h-full object-cover' />
+            <img
+              src={recipe.image}
+              alt={recipe.name}
+              className='w-full 3xl:w-[918px] h-[760px] object-cover'
+            />
           </div>
           <RecipeNavigationButtons recipesList={recipesList} id={id} />
         </div>

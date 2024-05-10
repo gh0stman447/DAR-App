@@ -21,9 +21,9 @@ const FilterBlock = () => {
     dispatch(changeFilter({ field: 'difficulty', value: selectedFilter }));
   }, [selectedFilter, dispatch]);
   return (
-    <div className='w-full flex flex-col gap-y-12 bg-white p-6 lg:max-w-[465px] lg:mb-0'>
-      <div className='p-6 grow'>
-        <div className='bg-[##fafafa] mb-6 max-w-[370px] h-[160px] overflow-hidden'>
+    <div className='w-full flex flex-col gap-y-12 bg-white p-6 lg:max-w-[465px]'>
+      <div className='p-6 4xl:grow'>
+        <div className='bg-[##fafafa] mb-6 max-w-[370px] h-[160px] overflow-hidden mx-auto'>
           <img src={'/assets/eda.jpeg'} alt='Еда вкусная' className=' w-full object-cover' />
         </div>
         <TextSection />
