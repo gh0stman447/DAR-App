@@ -13,7 +13,7 @@ const RandomRecipeButton = () => {
         variant='outline'
         color='gray'
         size={'3'}
-        onClick={() => navigate(`/dish/${getRandomInt(1, recipes.length + 1)}`)}
+        onClick={() => navigate(`/recipe/${getRandomInt(1, recipes.length + 1)}`)}
       >
         <span className='font-normal text-[14px]'> Мне повезёт!</span>
       </Button>

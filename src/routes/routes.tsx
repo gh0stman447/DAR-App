@@ -8,7 +8,7 @@ const routes = [
     errorElement: <div>404</div>,
   },
   {
-    path: '/dish/:id',
+    path: '/recipe/:id',
     element: <DishInfoPage />,
   },
 ];

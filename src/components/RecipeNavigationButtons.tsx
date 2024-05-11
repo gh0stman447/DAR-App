@@ -18,7 +18,7 @@ const RecipeNavigationButtons: FC<RecipeNavigationButtonsProps> = ({ id, recipes
       <button
         className='p-[10px] bg-white border-2 border-grey rounded-md hover:bg-light-grey hover:scale-125 duration-300'
         onClick={() =>
-          recipeIndex !== 0 && navigate(`/dish/${recipesList.recipes[recipeIndex - 1].id}`)
+          recipeIndex !== 0 && navigate(`/recipe/${recipesList.recipes[recipeIndex - 1].id}`)
         }
         disabled={recipeIndex === 0}
       >
@@ -28,7 +28,7 @@ const RecipeNavigationButtons: FC<RecipeNavigationButtonsProps> = ({ id, recipes
         className='p-[10px] bg-white border-2 border-grey rounded-md hover:bg-light-grey hover:scale-125 duration-300'
         onClick={() =>
           recipeIndex !== recipesList.recipes.length - 1 &&
-          navigate(`/dish/${recipesList.recipes[recipeIndex + 1].id}`)
+          navigate(`/recipe/${recipesList.recipes[recipeIndex + 1].id}`)
         }
         disabled={recipeIndex === recipesList.recipes.length - 1}
       >

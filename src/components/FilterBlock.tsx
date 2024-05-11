@@ -22,8 +22,8 @@ const FilterBlock = () => {
   }, [selectedFilter, dispatch]);
   return (
     <div className='w-full flex flex-col gap-y-12 bg-white p-6 lg:max-w-[465px]'>
-      <div className='p-6 4xl:grow'>
-        <div className='bg-[##fafafa] mb-6 max-w-[370px] h-[160px] overflow-hidden mx-auto'>
+      <div className='md:p-6 leading-[1.2]'>
+        <div className='bg-[##fafafa] mb-6 lg:max-w-[370px] lg:h-[160px] overflow-hidden object-cover mx-auto'>
           <img src={'/assets/eda.jpeg'} alt='Еда вкусная' className=' w-full object-cover' />
         </div>
         <TextSection />

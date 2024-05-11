@@ -12,7 +12,9 @@ const RecipeInfo: FC<RecipeInfoProps> = ({ recipe }) => {
 
   return (
     <div className='flex flex-col gap-2 p-6'>
-      <div className='text-[10px] opacity-45'>{recipe.instructions}</div>
+      <div className='text-[10px] opacity-45 max-h-[108px] overflow-hidden text-ellipsis'>
+        {recipe.instructions}
+      </div>
       <div className='flex flex-col gap-2 text-[12px]'>
         <div className='flex gap-2 items-center'>
           <TimerIcon className='w-5 h-5' />

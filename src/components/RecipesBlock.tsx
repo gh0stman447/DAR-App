@@ -21,10 +21,11 @@ const RecipesBlock = () => {
 
   if (status === Status.LOADING) return <Spinner size={'3'} />;
   if (status === Status.ERROR) return <div>Произошла ошибка на стороне сервера :(</div>;
+
   return (
     <div className='w-full flex flex-col bg-light-grey gap-3'>
-      <div className='h-14 bg-white flex gap-3 text-[20px] font-medium items-center py-4 px-6 mt-3 lg:mt-0'>
-        Найденные рецепты{' '}
+      <div className='h-14 bg-white flex gap-3 text-[16px] md:text-[20px] font-medium items-center py-4 px-6 mt-3 lg:mt-0'>
+        <h2> Найденные рецепты </h2>
         <span className='text-[14px] font-normal opacity-45 mt-[3px]'>
           {filteredRecipes.length}
         </span>
@@ -34,7 +35,7 @@ const RecipesBlock = () => {
           <div className='text-4xl text-center'>Рецепты не найдены :(</div>
         ) : (
           <>
-            <div className='2xl:grid 2xl:grid-cols-2 4xl:grid-cols-3 gap-3 px-3 justify-center'>
+            <div className='2xl:grid 2xl:grid-cols-2 4xl:grid-cols-3 gap-y-2 gap-x-3 px-3 justify-center'>
               {paginatedList.map((recipe) => (
                 <Recipe key={recipe.id} recipe={recipe} />
               ))}
