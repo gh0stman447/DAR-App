@@ -7,7 +7,7 @@ import { Status } from '../lib/constants';
 
 const RecipesBlock = () => {
   const [currentPage, setCurrentPage] = useState(0);
-  const [limit, setLimit] = useState(6);
+  const [limit] = useState(6);
 
   const { filteredRecipes, status, filters } = useAppSelector((state) => state.recipes);
 
@@ -30,7 +30,7 @@ const RecipesBlock = () => {
           {filteredRecipes.length}
         </span>
       </div>
-      <div className='flex flex-col'>
+      <div className='flex flex-col grow'>
         {paginatedList.length <= 0 ? (
           <div className='text-4xl text-center'>Рецепты не найдены :(</div>
         ) : (

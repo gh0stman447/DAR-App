@@ -66,7 +66,7 @@ const RecipeInfoPage = () => {
           <RecipeInstruction recipe={recipe} />
         </div>
         <div className='bg-light-grey w-full flex flex-col gap-3 col-span-2 '>
-          <div className='flex-grow p-3 '>
+          <div className='grow p-3 '>
             <img
               src={recipe.image}
               alt={recipe.name}
