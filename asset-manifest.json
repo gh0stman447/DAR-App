@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/dar-task/static/css/main.4486e876.css",
+    "main.js": "/dar-task/static/js/main.04894a40.js",
+    "index.html": "/dar-task/index.html",
+    "main.4486e876.css.map": "/dar-task/static/css/main.4486e876.css.map",
+    "main.04894a40.js.map": "/dar-task/static/js/main.04894a40.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.4486e876.css",
+    "static/js/main.04894a40.js"
+  ]
+}
