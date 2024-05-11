@@ -1,5 +1,5 @@
 import HomePage from '../pages/HomePage';
-import DishInfoPage from '../pages/DishInfoPage';
+import DishInfoPage from '../pages/RecipenfoPage';
 
 const routes = [
   {

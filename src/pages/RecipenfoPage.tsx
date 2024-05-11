@@ -6,7 +6,7 @@ import RecipeInstruction from '../components/RecipeInstruction';
 import RecipeNavigationButtons from '../components/RecipeNavigationButtons';
 import { Status } from '../lib/constants';
 
-const DishInfoPage = () => {
+const RecipeInfoPage = () => {
   const { id } = useParams();
 
   const { recipesList, status } = useAppSelector((state) => state.recipes);
@@ -24,32 +24,32 @@ const DishInfoPage = () => {
       <Header title={recipe.name} />
       <div className='lg:grid lg:grid-cols-2 gap-x-4 3xl:flex-nowrap 3xl:flex'>
         <div className='flex flex-col gap-3 w-full 3xl:max-w-[465px] bg-grey'>
-          <div className='divide-y bg-white'>
+          <div className='divide-y divide-grey bg-white'>
             <h5 className='py-4 px-6'>Кухня</h5>
             <div className='py-6 px-6 font-normal'>{recipe.cuisine}</div>
           </div>
-          <div className='divide-y bg-white'>
-            <h5 className='py-4 px-6 '>Теги</h5>
-            <div className='py-6 px-6 opacity-45 text-[14px] font-normal'>
+          <div className='divide-y divide-grey bg-white'>
+            <h5 className='py-4 px-6'>Теги</h5>
+            <div className='py-6 px-6 text-[14px] font-normal'>
               {recipe.tags.map((tag) => (
-                <span key={tag} className='mr-2'>
+                <span key={tag} className='mr-2 opacity-45'>
                   #{tag}
                 </span>
               ))}
             </div>
           </div>
-          <div className='divide-y bg-white'>
-            <h5 className='py-4 px-6 '>Калорийность</h5>
+          <div className='divide-y divide-grey bg-white'>
+            <h5 className='py-4 px-6'>Калорийность</h5>
             <div className='py-6 px-6 flex flex-col gap-2 text-[14px] font-normal'>
               <span>{recipe.caloriesPerServing}</span>
               <span className='opacity-45'>100 грамм</span>
             </div>
           </div>
-          <div className='divide-y bg-white'>
+          <div className='divide-y divide-grey bg-white'>
             <h5 className='py-4 px-6 '>Количество порций</h5>
             <div className='py-6 px-6 text-[20px] font-bold'>{recipe.servings}</div>
           </div>
-          <div className='divide-y bg-white flex-grow md:mb-3 3xl:mb-0'>
+          <div className='divide-y divide-grey bg-white flex-grow md:mb-3 3xl:mb-0'>
             <h5 className='py-4 px-6 '>Описание</h5>
             <div className='py-6 px-6 opacity-4 text-[14px] font-normal'>
               <p>{recipe.instructions}</p>
@@ -57,17 +57,13 @@ const DishInfoPage = () => {
           </div>
         </div>
         <div className='w-full 3xl:max-w-[465px] bg-grey flex flex-col gap-3'>
-          <div className='divide-y bg-white'>
+          <div className='divide-y divide-grey bg-white'>
             <h5 className='py-4 px-6 '>Общее время приготовления</h5>
             <div className='py-6 px-6 font-normal'>
               {recipe.cookTimeMinutes + recipe.prepTimeMinutes} минут
             </div>
           </div>
-          <div className='bg-white flex-grow mb-3 3xl:mb-0'>
-            <div className='divide-y bg-white'>
-              <RecipeInstruction recipe={recipe} />
-            </div>
-          </div>
+          <RecipeInstruction recipe={recipe} />
         </div>
         <div className='bg-light-grey w-full flex flex-col gap-3 col-span-2 '>
           <div className='flex-grow p-3 '>
@@ -84,4 +80,4 @@ const DishInfoPage = () => {
   );
 };
 
-export default DishInfoPage;
+export default RecipeInfoPage;
