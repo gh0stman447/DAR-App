@@ -1,6 +1,5 @@
 import Header from '../components/Header';
-import { useNavigate, useParams } from 'react-router-dom';
-import { ChevronLeftIcon, ChevronRightIcon } from '@radix-ui/react-icons';
+import { useParams } from 'react-router-dom';
 import { Spinner } from '@radix-ui/themes';
 import { useAppSelector } from '../hooks';
 import RecipeInstruction from '../components/RecipeInstruction';

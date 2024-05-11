@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Recipe from './RecipeItem';
 import { Spinner } from '@radix-ui/themes';
 import { useAppSelector } from '../hooks';

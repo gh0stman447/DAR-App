@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 import { isFiltersNull } from '../state/recipes/recipesSlice';
 import { useAppSelector } from '../hooks';
 
