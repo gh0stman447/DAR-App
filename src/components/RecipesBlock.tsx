@@ -30,12 +30,12 @@ const RecipesBlock = () => {
           {filteredRecipes.length}
         </span>
       </div>
-      <div className='flex flex-col grow'>
+      <div className='flex flex-col h-full'>
         {paginatedList.length <= 0 ? (
           <div className='text-4xl text-center'>Рецепты не найдены :(</div>
         ) : (
           <>
-            <div className='2xl:grid 2xl:grid-cols-2 4xl:grid-cols-3 gap-y-2 gap-x-3 px-3 justify-center'>
+            <div className='2xl:grid 2xl:grid-cols-2 4xl:grid-cols-3 gap-y-2 gap-x-3 px-3 justify-center grow'>
               {paginatedList.map((recipe) => (
                 <Recipe key={recipe.id} recipe={recipe} />
               ))}
