@@ -36,7 +36,7 @@ const Header: FC<HeaderProps> = ({ title }) => {
         );
         setSearchedRecipes(searchedRecipes);
         setIsLoading(false);
-      }, 300);
+      }, 200);
     };
 
     handleSearchInput(searchRecipe);
