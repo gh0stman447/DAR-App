@@ -7,7 +7,7 @@ const routes = [
     element: <HomePage />,
     errorElement: <div>404</div>,
   },
-  {
+  { 
     path: '/recipe/:id',
     element: <DishInfoPage />,
   },

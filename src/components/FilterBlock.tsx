@@ -20,6 +20,7 @@ const FilterBlock = () => {
   useEffect(() => {
     dispatch(changeFilter({ field: 'difficulty', value: selectedFilter }));
   }, [selectedFilter, dispatch]);
+
   return (
     <div className='w-full flex flex-col gap-y-12 bg-white p-6 lg:max-w-[465px]'>
       <div className='md:p-6 leading-[1.2]'>
