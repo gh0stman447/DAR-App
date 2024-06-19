@@ -8,3 +8,5 @@ To lounch this app, follow these steps:
 After these steps, you should have the react application running on port 3000
 
 Thanks for interesting task! :)
+
+Link to the project: https://dar-app.vercel.app/
